@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
+
+Route::get('/articoli', [ArticleController::class, 'index'])
+->name('articles.index');
+
+Route::get('/articoli/aggiungi', [ArticleController::class, 'create'])
+->name('articles.create');
+
+Route::get('/articoli/modifica/{id}', [ArticleController::class, 'edit'])
+->name('articles.edit');
